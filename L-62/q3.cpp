@@ -1,9 +1,8 @@
 #include <iostream>
-#include<vector>     /* For Method - 2 */ 
+#include <vector> /* For Method - 2 */
 using namespace std;
 
 // Printing no of subsets with Perfect Sum
-
 
 // int perfectSum(int arr[], int index, int n, int sum)
 // {
@@ -50,7 +49,6 @@ using namespace std;
 
 // Printing with subsets
 
-
 int perfectSum(int arr[], int index, int n, int sum, vector<int> &temp)
 {
     if (index == n)
@@ -62,7 +60,7 @@ int perfectSum(int arr[], int index, int n, int sum, vector<int> &temp)
             for (int i = 0; i < temp.size(); i++)
                 cout << temp[i] << " ";
             cout << "}" << endl;
-            return 1;  // One valid subset found
+            return 1; // One valid subset found
         }
         else
         {
@@ -73,14 +71,10 @@ int perfectSum(int arr[], int index, int n, int sum, vector<int> &temp)
     // Exclude current element
     int exclude = perfectSum(arr, index + 1, n, sum, temp);
 
-    // Include current element (only if <= sum)
-    int include = 0;
-    if (arr[index] <= sum)
-    {
-        temp.push_back(arr[index]);
-        include = perfectSum(arr, index + 1, n, sum - arr[index], temp);
-        temp.pop_back();  // Backtrack
-    }
+    // Include current element
+    temp.push_back(arr[index]);
+    int include = perfectSum(arr, index + 1, n, sum - arr[index], temp);
+    temp.pop_back();
 
     return exclude + include;
 }
@@ -99,7 +93,7 @@ int main()
     cout << "Enter target sum K: ";
     cin >> k;
 
-    vector<int>temp;
+    vector<int> temp;
     cout << "\nSubsets with sum " << k << " are:\n";
     int totalWays = perfectSum(arr, 0, n, k, temp);
 
