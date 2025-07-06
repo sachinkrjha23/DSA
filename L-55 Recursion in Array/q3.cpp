@@ -32,7 +32,7 @@ int main()
 
     int minValue = findMin(arr, n, 0);  // Start from first index (0)
 
-    cout << "Minimum element in the array is: " << minValue << endl;
+    cout << "Minimum element in the array is: " << minValue << " at index "<< i << endl;
 
     return 0;
 }
