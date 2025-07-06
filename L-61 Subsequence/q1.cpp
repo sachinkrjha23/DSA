@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void subseq(int arr[], int index, int n, vector<vector<int>> &ans, vector<int> &temp)
+void subseq(vector<int> &arr, int index, int n, vector<vector<int>> &ans, vector<int> &temp)
 {
     if (index == n)
     {
@@ -25,7 +25,7 @@ int main()
     cout << "Enter the size of the array: ";
     cin >> n;
 
-    int arr[n];
+    vector<int> arr(n);
     cout << "Enter " << n << " elements: ";
     for (int i = 0; i < n; i++)
     {

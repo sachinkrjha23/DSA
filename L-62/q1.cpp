@@ -21,7 +21,7 @@ void subsetSum(int arr[], int index, int n, int sum, vector<int> &subset)
     // Include current element
     subset.push_back(arr[index]);
     subsetSum(arr, index + 1, n, sum + arr[index], subset);
-    subset.pop_back(); // backtrack
+    subset.pop_back(); 
 }
 
 int main()
@@ -38,7 +38,7 @@ int main()
     }
 
     vector<int> subset;
-    cout << "\nSubsets with their sums:\n";
+    cout << "\nSubsets with their sum:\n";
     subsetSum(arr, 0, n, 0, subset);
 
     return 0;
