@@ -24,10 +24,9 @@ int num(char ch)
 // Function to convert a Roman numeral string to an integer
 int romanToInt(string s)
 {
-    int sum = 0;   // Stores the final integer value
-    int index = 0; // Index for iteration
+    int sum = 0;
+    int index = 0;
 
-    // Traverse the string except the last character
     while (index < s.size() - 1)
     {
         // If current numeral is smaller than the next, subtract it
@@ -40,7 +39,7 @@ int romanToInt(string s)
         {
             sum += num(s[index]);
         }
-        index++; // Move to the next character
+        index++;
     }
 
     // Add the last character's value
@@ -49,7 +48,6 @@ int romanToInt(string s)
     return sum;
 }
 
-// Driver function to test the code
 int main()
 {
     string s;
