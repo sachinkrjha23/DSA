@@ -1,5 +1,3 @@
-// Longest Prefix Suffix
-
 #include <iostream>
 #include <vector>
 using namespace std;

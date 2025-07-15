@@ -3,9 +3,9 @@ using namespace std;
 
 int SmallestDistinctWindow(string s)
 {
-    int count[256] = {0};      // Frequency of chars in current window
-    int diff = 0;              // Total distinct chars in s
-    int first = 0, second = 0; // Window boundaries
+    int count[256] = {0};      
+    int diff = 0;              
+    int first = 0, second = 0; 
     int len = s.size();  
 
     // Step 1: Count total distinct characters
@@ -24,19 +24,17 @@ int SmallestDistinctWindow(string s)
         count[i] = 0;
     }
 
-    int matched = 0; // How many distinct chars matched in current window
+    int matched = 0; 
 
     while (second < s.size())
     {
         count[s[second]]++;
 
-        // If this char count just became 1, it's a new matched distinct char
         if (count[s[second]] == 1)
         {
             matched++;
         }
 
-        // If all distinct chars matched, try to shrink window from left
         while (matched == diff)
         {
             int window_len = second - first + 1;
@@ -45,7 +43,6 @@ int SmallestDistinctWindow(string s)
                 len = window_len;
             }
 
-            // Remove leftmost char from window
             count[s[first]]--;
             if (count[s[first]] == 0)
             {

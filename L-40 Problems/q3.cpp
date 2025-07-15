@@ -1,48 +1,46 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
+#include <vector>
+
 using namespace std;
 
-// Single function to compute factorial using strings
-string factorial(int n)
+vector<int> fact(int n)
 {
-    string result = "1"; // Start with 1 as a string
+    vector<int> ans(1, 1); 
 
-    for (int i = 2; i <= n; ++i)
+    while (n > 1)
     {
-        string temp = "";
-        int carry = 0;
-
-        // Multiply current result with i (digit by digit)
-        for (int j = result.size() - 1; j >= 0; --j)
+        int carry = 0, result, size = ans.size();
+        for (int i = 0; i < size; i++)
         {
-            int product = (result[j] - '0') * i + carry;
-            temp += (product % 10) + '0'; // Store last digit
-            carry = product / 10;         // Keep the carry
+            result = ans[i] * n + carry;
+            carry = result / 10;
+            ans[i] = result % 10;
         }
 
-        // Add remaining carry
         while (carry)
         {
-            temp += (carry % 10) + '0';
+            ans.push_back(carry % 10);
             carry /= 10;
         }
 
-        reverse(temp.begin(), temp.end()); // Reverse to correct order
-        result = temp;                     // Update result
+        n--;
     }
 
-    return result;
+    return ans;
 }
 
-// Main function to test the code
 int main()
 {
-    int num;
+    int n;
     cout << "Enter a number: ";
-    cin >> num;
+    cin >> n;
 
-    cout << "Factorial of " << num << " is:\n"
-         << factorial(num) << endl;
+    vector<int> result = fact(n);
+
+    cout << n << "! = ";
+    for (int i = result.size() - 1; i >= 0; i--)
+        cout << result[i];
+    cout << endl;
+
     return 0;
 }

@@ -3,7 +3,7 @@ using namespace std;
 
 int lengthOfLongestSubstring(string s)
 {
-    int count[256] = {0}; // Array to track character occurrences (0 = not seen, 1 = seen)
+    int count[256] = {0}; 
     int first = 0, second = 0, length = 0;
 
     while (second < s.size())
